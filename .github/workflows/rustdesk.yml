@@ -16,8 +16,8 @@ jobs:
       run: |
         choco install rustdesk -y
 
-    - name: Show Connection Info
-      run: |
-        Start-Process "C:\Program Files\RustDesk\rustdesk.exe"
-        Write-Host "Please open RustDesk on your Android and enter the ID & Password shown on this VM."
-        Start-Sleep -Seconds 21600
+    - name: Show RustDesk ID and Password
+  run: |
+    type "C:\Program Files\RustDesk\id.txt"
+    type "C:\Program Files\RustDesk\passwd.txt"
+    Start-Sleep -Seconds 21600
