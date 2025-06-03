@@ -1,0 +1,23 @@
+name: RustDesk Windows VM
+
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 360
+    steps:
+    - name: Install Chocolatey
+      run: |
+        Set-ExecutionPolicy Bypass -Scope Process -Force
+        iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+    - name: Install RustDesk
+      run: |
+        choco install rustdesk -y
+
+    - name: Show Connection Info
+      run: |
+        Start-Process "C:\Program Files\RustDesk\rustdesk.exe"
+        Write-Host "Please open RustDesk on your Android and enter the ID & Password shown on this VM."
+        Start-Sleep -Seconds 21600
